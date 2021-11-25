@@ -1,61 +1,42 @@
 #include <ncurses.h>
 #include <windows.h>
-#include <iostream>
-#include "string.h";
-
 using namespace std;
 
-
-void yay(){
-	
-	Sleep(10000);
-	refresh();
-	clear();
-	
-	
-}
-
-
-
-//void(){
-//	
-//	WINDOW * win =newwin( 20,40, 2, 3);
-//	refresh();
-//	box (win, 0,0);
-//	wprintw (win, "");
-//	wrefresh ();
-//	
-//	
-//}
-
-
 int main(){
-	
+	int x = 1, y = 1;
 	initscr();
-
-	start_color();
 	
-	
-	WINDOW * win =newwin( 20,40, 2, 3);
+	//newwin(height, width, start_x, start_y)
+	WINDOW * wina = newwin(20, 120, 1, 1);
 	refresh();
-	box (win, 0,0);
-	wprintw (win, "");
-	for(int k=0 ;k<19;k++) {
-	init_pair(2, COLOR_YELLOW,COLOR_WHITE);
-	attron (COLOR_PAIR(2));			
-	wprintw(win,"%s", name[k].c_str());	
-	yay();
-	wrefresh (win);
 	
+	wmove(wina, y, x);
+	wprintw(wina, "|±±|");
+	wrefresh(wina);
 	
-}
-
-	wrefresh(win);
-	refresh();
+	keypad(wina, TRUE);
+	
+	while(true){
+		int movement;
+//		movement = wgetch(win);
+		x++;
+		Sleep(20);
+				if(x == 120){
+					x = 1;
+				}else{
+					x++;
+				}
+		
+		wclear(wina);
+		wmove(wina, y, x);
+		wprintw(wina, "|±±|");
+		wrefresh(wina);
+	}
+	
 	getch();
 	endwin();
-	
-
-	
-	
 }
+
+
+
+// tampilan berjalan obje
