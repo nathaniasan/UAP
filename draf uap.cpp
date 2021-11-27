@@ -39,4 +39,4 @@ int main(){
 
 
 
-// tampilan berjalan obje
+// tampilan berjalan objek
