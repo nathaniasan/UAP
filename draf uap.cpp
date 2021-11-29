@@ -2,14 +2,41 @@
 #include <windows.h>
 using namespace std;
 
+
+
+//void menu(){
+//	int pilihan;
+//	 printw ("=======Selamat Datang Di game Ular===========\n");
+//	 printw ("1. Play\n2. Exit\n ");
+//	 printw ("Masukkan pilihan kamu:  ");
+//	 scanw ("%d",pilihan);
+//	 if (pilihan==1){
+//	
+//	 }else {
+//	 	
+//	 }
+//}
+
+
+
+
+
+
 int main(){
 	int x = 1, y = 1;
 	initscr();
 	
-	//newwin(height, width, start_x, start_y)
-	WINDOW * wina = newwin(20, 120, 1, 1);
+//	menu();
+//	
+	clear();
+	
+	//newwin(height, width, start_y, start_x)
+	WINDOW * wina = newwin(20, 120, 1, 10);
 	refresh();
 	
+	
+	box(wina, 0, 0);
+
 	wmove(wina, y, x);
 	wprintw(wina, "|±±|");
 	wrefresh(wina);
@@ -17,20 +44,22 @@ int main(){
 	keypad(wina, TRUE);
 	
 	while(true){
+		
+		wclear(wina);
+		wmove(wina, y, x);
+		wprintw(wina, "|±±|");
+		wrefresh(wina);
 		int movement;
 //		movement = wgetch(win);
 		x++;
-		Sleep(20);
+		Sleep(2000);
 				if(x == 120){
 					x = 1;
 				}else{
 					x++;
 				}
 		
-		wclear(wina);
-		wmove(wina, y, x);
-		wprintw(wina, "|±±|");
-		wrefresh(wina);
+		
 	}
 	
 	getch();
@@ -39,4 +68,4 @@ int main(){
 
 
 
-// tampilan berjalan objek
+// tampilan berjalan obje
