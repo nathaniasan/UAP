@@ -111,6 +111,9 @@ int main(){
 	 
 	player();
 	rintangan();
+		
+	//rintangan();
+		//player();
 	
 		
 		
