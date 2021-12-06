@@ -19,7 +19,7 @@ void gotoxy(int x, int y) {
 int koyakY;
 int speed = 40;
 int gameover = 0;
-
+int tombol;
 
 
 
@@ -27,32 +27,24 @@ void player(){
 	
 	int y= 7;
 	int x= 2;
-	
-	int tombol;
+	int temp;
 	
 	char kotak[100] = "<>";
 	 
-	 move(y,x);
-	 printw("%s", kotak);
-	 
-	while(tombol == getch()) {
-		
+	for(int i;;){
+		clear();
+		noecho();
+		tombol=getch();
 		if(tombol==72){
-			if(y==7) {
-			y--;	
-			
-}
-
-			
+			y=7;
 		}
-
-
-			
-			
-	
+		else if(tombol==80){
+			y=9;
+		}
+		mvprintw(y,x, kotak);refresh();
+	}
 }
 
-}
 
 	
 
@@ -72,6 +64,7 @@ void rintangan(){
 	
 	init_pair(1,COLOR_RED,COLOR_RED);
 	init_pair(2,COLOR_WHITE,COLOR_WHITE);
+	init_pair(3,COLOR_YELLOW,COLOR_YELLOW);
 	
 	//sumbu y = 7 & 9
 	//sumbu x = 60 sampai 116
@@ -81,11 +74,17 @@ void rintangan(){
 	int c=7;
 	int d=90;
 	int e=7;
-	int f=100;
+	int f=108;
 	int g=7;
 	int h=130;
 	
 	int time=50;//time
+	
+	int y= 7;
+	int x= 2;
+	int temp;
+	
+	char kotak[100] = "<>";
 	
 	attron(COLOR_PAIR(1));
 	mvprintw(8,0,"000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
@@ -95,27 +94,33 @@ void rintangan(){
 	mvprintw(c,d,"00");//kotak2
 	mvprintw(e,f,"00");//kotak3
 	mvprintw(g,h,"00");
-	
-	
-	
-	
-	
+
 	for(int i = 0;;i++){
 		for(int i = 0;i<140;i++){
+		noecho();
+		tombol=getch();
 		clear();
 		attron(COLOR_PAIR(2));
 		mvprintw(8,0,"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
 		attroff(COLOR_PAIR(2));
 		attron(COLOR_PAIR(1));
-		
-		player();
-		
 
 		mvprintw(a,b-i,"00"); // bawah
 		mvprintw(c,d-i,"00"); // kotak tengh
 		mvprintw(e,f-i,"00"); //kotak depan 
 		mvprintw(g,h-i,"00");
+		attroff(COLOR_PAIR(1));
 		Sleep(time);refresh();
+		
+		if(tombol==72){
+			y=7;
+		}
+		else if(tombol==80){
+			y=9;
+		}
+		attron(COLOR_PAIR(3));
+		mvprintw(y,x, kotak);refresh();
+		attroff(COLOR_PAIR(3));
 		attroff(COLOR_PAIR(1));refresh();
 		}
 	}
